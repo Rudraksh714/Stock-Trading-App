@@ -6,7 +6,7 @@ import HomePage from "./landing_page/home/HomePage";
 import Signup from "./landing_page/signup/Signup.js";
 import AboutPage from "./landing_page/about/AboutPage.js";
 import ProductPage from "./landing_page/products/ProductPage.js";
-import PricingPage from "./landing_page/home/Pricing.js";
+import PricingPage from "./landing_page/pricing/PricingPage.js";
 import SupportPage from "./landing_page/support/SupportPage.js";
 import Footer from "./landing_page/Footer.js";
 import Navbar from "./landing_page/Navbar.js";
