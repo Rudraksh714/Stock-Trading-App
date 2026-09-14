@@ -90,12 +90,13 @@ function NavBar() {
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           <img
-            src="media/images/logo.jpg"
+            src="/media/Images/logo.jpg"
             alt="logo"
             style={{
-              width: "10%",
-              minWidth: "55px",
+              width: "55px",
+              height: "55px",
               objectFit: "contain",
+              display: "block",
             }}
           />
         </Link>
