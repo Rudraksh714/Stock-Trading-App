@@ -14,7 +14,7 @@ function Hero() {
         <div className="row p-5 mt-3 text-center">
           <div className="col-4 p-4">
             <img
-              src="media/Images/pricingEquity.svg"
+              src="/media/Images/pricingEquity.svg"
               style={{ height: "200px", objectFit: "contain" }}
             />
             <h2 className="fw-normal mt-4" style={{ color: "#f5f6f8" }}>
@@ -35,7 +35,7 @@ function Hero() {
           </div>
           <div className="col-4 p-4">
             <img
-              src="media/Images/intradayTrades.svg"
+              src="/media/Images/intradayTrades.svg"
               style={{ height: "200px", objectFit: "contain" }}
             />
             <h2 className="fw-normal mt-4" style={{ color: "#f5f6f8" }}>
@@ -57,7 +57,7 @@ function Hero() {
           </div>
           <div className="col-4 p-4">
             <img
-              src="media/Images/pricingEquity.svg"
+              src="/media/Images/pricingEquity.svg"
               style={{ height: "200px", objectFit: "contain" }}
             />
             <h2 className="fw-normal mt-4" style={{ color: "#f5f6f8" }}>

@@ -11,7 +11,7 @@ function Awards() {
       <div className="row">
         <div className="col-6 p-5 d-flex align-items-center justify-content-center">
           <img
-            src="media/images/largestBroker.svg"
+            src="/media/Images/largestBroker.svg"
             style={{
               width: "90%",
             }}
@@ -79,7 +79,7 @@ function Awards() {
             }}
           >
             <img
-              src="media/images/pressLogos.png"
+              src="/media/Images/pressLogos.png"
               style={{
                 width: "100%",
                 maxWidth: "420px",

@@ -6,7 +6,7 @@ function Education() {
       <div className="row">
         <div className="col-6">
           <img
-            src="media/images/education.svg"
+            src="/media/Images/education.svg"
             style={{
               width: "70%",
               position: "relative",

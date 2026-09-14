@@ -100,7 +100,7 @@ function Stats() {
 
         <div className="col-6 p-5">
           <img
-            src="media/images/ecosystem.png"
+            src="/media/Images/ecosystem.png"
             style={{
               width: "90%",
               opacity: "0.9",

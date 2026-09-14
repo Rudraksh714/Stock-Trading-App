@@ -23,7 +23,7 @@ function Team() {
       >
         <div className="col-6 p-5 text-center">
           <img
-            src="media/images/IMG_6363.JPG"
+            src="/media/Images/IMG_6363.JPG"
             style={{ width: "70%", borderRadius: "10%" }}
           />
           <br />

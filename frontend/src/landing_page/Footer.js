@@ -16,7 +16,7 @@ function Footer() {
           {/* BRAND */}
           <div className="col">
             <img
-              src="media/images/logo.jpg"
+              src="/media/Images/logo.jpg"
               style={{ width: "20%" }}
               alt="Equinox Trade logo"
             />
