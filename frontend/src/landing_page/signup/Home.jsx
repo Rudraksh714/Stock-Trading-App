@@ -14,9 +14,9 @@ const Home = () => {
         navigate("/login");
       }
       const { data } = await axios.post(
-        "http://localhost:4000",
+        `${process.env.REACT_APP_API_URL}/auth/verify`,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
       const { status, user } = data;
       setUsername(user);
@@ -43,7 +43,8 @@ const Home = () => {
           alignItems: "center",
           justifyContent: "center",
           gap: "20px",
-          background: "linear-gradient(135deg, #2b3040 0%, #3a4054 45%, #2b3040 100%)",
+          background:
+            "linear-gradient(135deg, #2b3040 0%, #3a4054 45%, #2b3040 100%)",
         }}
       >
         <h4 style={{ color: "#f5f6f8" }}>

@@ -20,7 +20,12 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3001", "http://localhost:3000"],
+    origin: [
+      "http://localhost:3001",
+      "http://localhost:3000",
+      "https://stock-trading-app-rho.vercel.app",
+      "https://stock-trading-app-1re2-nu.vercel.app",
+    ],
     credentials: true,
   }),
 );
@@ -324,7 +329,6 @@ app.post("/withdrawFunds", userVerification, async (req, res) => {
     availableCash: funds.availableCash,
   });
 });
-
 
 app.get("/fundTransactions", userVerification, async (req, res) => {
   const funds = await FundsModel.findOne({ userId: req.userId });
