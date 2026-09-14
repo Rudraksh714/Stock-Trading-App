@@ -22,7 +22,7 @@ const Dashboard = () => {
 
     axios
       .post(
-        "${process.env.REACT_APP_API_URL}/auth/",
+        `${process.env.REACT_APP_API_URL}/auth/`,
         {},
         {
           withCredentials: true,

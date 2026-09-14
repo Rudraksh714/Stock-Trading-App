@@ -9,7 +9,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get("${process.env.REACT_APP_API_URL}/allOrders", {
+      .get(`${process.env.REACT_APP_API_URL}/allOrders`, {
         withCredentials: true,
       })
       .then((res) => {

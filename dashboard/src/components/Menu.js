@@ -15,7 +15,7 @@ const Menu = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "${process.env.REACT_APP_API_URL}/auth/logout",
+        `${process.env.REACT_APP_API_URL}/auth/logout`,
         {},
         {
           withCredentials: true,
@@ -108,6 +108,7 @@ const Menu = () => {
                 Profile
               </NavLink>
             </div>
+
             <button className="dropdown-logout" onClick={handleLogout}>
               Logout
             </button>

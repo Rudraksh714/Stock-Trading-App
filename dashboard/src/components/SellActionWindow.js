@@ -15,7 +15,7 @@ const SellActionWindow = ({ uid }) => {
   const handleSellClick = async () => {
     try {
       await axios.post(
-        "${process.env.REACT_APP_API_URL}/newOrder",
+        `${process.env.REACT_APP_API_URL}/newOrder`,
         {
           name: uid,
           qty: stockQuantity,

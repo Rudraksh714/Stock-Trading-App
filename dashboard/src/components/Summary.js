@@ -22,7 +22,7 @@ const Summary = () => {
 
   useEffect(() => {
     axios
-      .get("${process.env.REACT_APP_API_URL}/funds", {
+      .get(`${process.env.REACT_APP_API_URL}/funds`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -30,7 +30,7 @@ const Summary = () => {
       });
 
     axios
-      .get("${process.env.REACT_APP_API_URL}/allHoldings", {
+      .get(`${process.env.REACT_APP_API_URL}/allHoldings`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -122,7 +122,9 @@ const Summary = () => {
               </div>
 
               <span
-                className={`badge ${totalPnL >= 0 ? "profit-badge" : "loss-badge"}`}
+                className={`badge ${
+                  totalPnL >= 0 ? "profit-badge" : "loss-badge"
+                }`}
               >
                 {totalPnL >= 0 ? "+" : ""}
                 {totalPnLPercent.toFixed(2)}%

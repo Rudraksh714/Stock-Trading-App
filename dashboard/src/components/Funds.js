@@ -14,7 +14,7 @@ const Funds = () => {
 
   useEffect(() => {
     axios
-      .get("${process.env.REACT_APP_API_URL}/funds", {
+      .get(`${process.env.REACT_APP_API_URL}/funds`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -22,7 +22,7 @@ const Funds = () => {
       });
 
     axios
-      .get("${process.env.REACT_APP_API_URL}/fundTransactions", {
+      .get(`${process.env.REACT_APP_API_URL}/fundTransactions`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -33,7 +33,7 @@ const Funds = () => {
   const handleAddFunds = async () => {
     try {
       await axios.post(
-        "${process.env.REACT_APP_API_URL}/addFunds",
+        `${process.env.REACT_APP_API_URL}/addFunds`,
         {
           amount: Number(addAmount),
         },
@@ -52,7 +52,7 @@ const Funds = () => {
   const handleWithdrawFunds = async () => {
     try {
       await axios.post(
-        "${process.env.REACT_APP_API_URL}/withdrawFunds",
+        `${process.env.REACT_APP_API_URL}/withdrawFunds`,
         {
           amount: Number(withdrawAmount),
         },

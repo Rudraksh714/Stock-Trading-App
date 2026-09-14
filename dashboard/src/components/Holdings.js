@@ -27,7 +27,7 @@ const Holdings = () => {
 
   useEffect(() => {
     axios
-      .get("${process.env.REACT_APP_API_URL}/allHoldings", {
+      .get(`${process.env.REACT_APP_API_URL}/allHoldings`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -53,17 +53,11 @@ const Holdings = () => {
       {/* Header */}
       <div className="holdings-header">
         <div>
-          <h3 className="holdings-title">
-            Holdings
-          </h3>
-          <p className="holdings-subtitle">
-            Your current investment portfolio
-          </p>
+          <h3 className="holdings-title">Holdings</h3>
+          <p className="holdings-subtitle">Your current investment portfolio</p>
         </div>
 
-        <span className="holdings-count">
-          {allHoldings.length} holdings
-        </span>
+        <span className="holdings-count">{allHoldings.length} holdings</span>
       </div>
 
       {/* Summary Cards */}
@@ -113,8 +107,7 @@ const Holdings = () => {
             <tbody>
               {allHoldings.map((stock, index) => {
                 const currValue = stock.price * stock.qty;
-                const isProfit =
-                  currValue - stock.avg * stock.qty >= 0.0;
+                const isProfit = currValue - stock.avg * stock.qty >= 0.0;
 
                 const profClass = isProfit ? "profit" : "loss";
                 const dayClass = stock.isLoss ? "loss" : "profit";
@@ -127,9 +120,7 @@ const Holdings = () => {
 
                 return (
                   <tr key={index}>
-                    <td className="instrument-name">
-                      {stock.name}
-                    </td>
+                    <td className="instrument-name">{stock.name}</td>
 
                     <td>{stock.qty}</td>
 
@@ -140,8 +131,7 @@ const Holdings = () => {
                     <td>₹{currValue.toFixed(2)}</td>
 
                     <td className={profClass}>
-                      {pnl >= 0 ? "+" : ""}
-                      ₹{pnl.toFixed(2)}
+                      {pnl >= 0 ? "+" : ""}₹{pnl.toFixed(2)}
                     </td>
 
                     <td>
