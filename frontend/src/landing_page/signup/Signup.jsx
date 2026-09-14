@@ -37,44 +37,44 @@ const Signup = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const { data } = await axios.post(
-        "http://localhost:3002/auth/signup",
-        {
-          email,
-          password,
-          username,
-        },
-        {
-          withCredentials: true,
-        },
-      );
+  try {
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_API_URL}/auth/signup`,
+      {
+        email,
+        password,
+        username,
+      },
+      {
+        withCredentials: true,
+      },
+    );
 
-      const { success, message } = data;
+    const { success, message } = data;
 
-      if (success) {
-        handleSuccess(message);
+    if (success) {
+      handleSuccess(message);
 
-        setTimeout(() => {
-          window.location.href = "http://localhost:3000";
-        }, 1000);
-      } else {
-        handleError(message);
-      }
-    } catch (error) {
-      console.log(error);
-
-      handleError(error.response?.data?.message || "Something went wrong");
+      setTimeout(() => {
+        window.location.href = "https://stock-trading-app-rho.vercel.app";
+      }, 1000);
+    } else {
+      handleError(message);
     }
+  } catch (error) {
+    console.log(error);
 
-    setInputValue({
-      email: "",
-      password: "",
-      username: "",
-    });
-  };
+    handleError(error.response?.data?.message || "Something went wrong");
+  }
+
+  setInputValue({
+    email: "",
+    password: "",
+    username: "",
+  });
+};
 
   return (
     <div className="form_container">

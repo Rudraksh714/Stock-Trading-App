@@ -40,7 +40,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/auth/login",
+        `${process.env.REACT_APP_API_URL}/auth/login`,
         {
           email,
           password,
@@ -58,7 +58,7 @@ const Login = () => {
         handleSuccess(message);
 
         setTimeout(() => {
-          window.location.href = "http://localhost:3000";
+          window.location.href = "https://stock-trading-app-1re2-nu.vercel.app";
         }, 1000);
       } else {
         handleError(message);
