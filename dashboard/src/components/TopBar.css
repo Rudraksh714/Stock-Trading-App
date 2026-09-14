@@ -1,0 +1,120 @@
+/* TOP BAR */
+
+
+.topbar-container {
+  width: 100%;
+  height: 10vh;
+  min-height: 64px;
+
+  display: flex;
+  align-items: center;
+
+  background-color: #0f1729;
+  color: #e8eaed;
+
+  border-bottom: 1px solid #1e2a47;
+
+  box-sizing: border-box;
+  z-index: 9;
+}
+
+/* MARKET INDICES */
+
+.indices-container {
+  flex-basis: 32%;
+  height: 100%;
+
+  padding: 10px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  border-right: 1px solid #1e2a47;
+
+  box-sizing: border-box;
+}
+
+
+.nifty,
+.sensex {
+  flex-basis: 40%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  white-space: nowrap;
+}
+
+
+.nifty > *,
+.sensex > * {
+  margin-right: 0;
+}
+
+
+/* INDEX NAME */
+
+.index {
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+
+  color: #5c6478;
+
+  white-space: nowrap;
+}
+
+.index:hover {
+  cursor: pointer;
+  color: #e8eaed;
+}
+
+
+/* INDEX VALUE */
+.index-points {
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  color: #e8eaed;
+
+  font-variant-numeric: tabular-nums;
+
+  white-space: nowrap;
+}
+
+
+/* PERCENTAGE / CHANGE */
+
+.percent {
+  display: flex;
+  align-items: center;
+
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  color: #8b92a5;
+
+  font-variant-numeric: tabular-nums;
+
+  white-space: nowrap;
+}
+
+
+/* Gain */
+
+.percent.text-success {
+  color: #3ddc97 !important;
+}
+
+
+/* Loss */
+
+.percent.text-danger {
+  color: #ff6b6b !important;
+}

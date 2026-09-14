@@ -1,0 +1,233 @@
+.equinox-trade-page {
+  min-height: 100vh;
+  color: #e4e6ea;
+}
+
+/* HERO */
+
+.equinox-hero {
+  padding: 100px 8% 110px;
+  border-bottom: 1px solid rgba(228, 230, 234, 0.12);
+  background:
+    radial-gradient(
+      circle at 75% 30%,
+      rgba(200, 204, 212, 0.12),
+      transparent 32%
+    ),
+    linear-gradient(135deg, #1c1f26 0%, #2a2e37 55%, #1c1f26 100%);
+}
+
+.equinox-hero-content {
+  max-width: 850px;
+}
+
+.equinox-label {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #b8bcc4;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.equinox-hero h1 {
+  margin: 0 0 24px;
+  color: #f5f6f8;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.equinox-hero p {
+  max-width: 650px;
+  margin: 0 0 32px;
+  color: #b8bcc4;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.equinox-cta {
+  display: inline-block;
+  padding: 11px 22px;
+  border: 1px solid rgba(228, 230, 234, 0.25);
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    #c8ccd4 0%,
+    #8f949e 50%,
+    #b8bcc4 100%
+  );
+  color: #1c1f26;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 650;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.equinox-cta:hover {
+  color: #1c1f26;
+  transform: translateY(-2px);
+  box-shadow: 0 11px 28px rgba(0, 0, 0, 0.3);
+}
+
+/* OVERVIEW */
+
+.equinox-overview {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 90px 30px;
+}
+
+.equinox-section-heading {
+  max-width: 650px;
+  margin-bottom: 45px;
+}
+
+.equinox-section-heading h2 {
+  margin: 0 0 12px;
+  color: #f5f6f8;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.equinox-section-heading p {
+  margin: 0;
+  color: #929aaa;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.equinox-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.equinox-feature-card {
+  min-height: 190px;
+  padding: 24px;
+  box-sizing: border-box;
+  border: 1px solid rgba(228, 230, 234, 0.13);
+  border-radius: 12px;
+  background: linear-gradient(
+    145deg,
+    rgba(58, 63, 75, 0.68),
+    rgba(28, 31, 38, 0.8)
+  );
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(228, 230, 234, 0.04);
+}
+
+.equinox-feature-card > span {
+  color: #929aaa;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.equinox-feature-card h3 {
+  margin: 18px 0 10px;
+  color: #e4e6ea;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.equinox-feature-card p {
+  margin: 0;
+  color: #929aaa;
+  font-size: 0.74rem;
+  line-height: 1.7;
+}
+
+/* HIGHLIGHT */
+
+.equinox-highlight {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  padding: 70px max(30px, 8%);
+  border-top: 1px solid rgba(228, 230, 234, 0.1);
+  border-bottom: 1px solid rgba(228, 230, 234, 0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(58, 63, 75, 0.55),
+    rgba(28, 31, 38, 0.7)
+  );
+}
+
+.equinox-highlight h2 {
+  margin: 0;
+  color: #f5f6f8;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.equinox-highlight p {
+  max-width: 500px;
+  margin: 0;
+  color: #b8bcc4;
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+
+/* BOTTOM */
+
+.equinox-bottom {
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.equinox-bottom h2 {
+  margin: 0 0 12px;
+  color: #f5f6f8;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.equinox-bottom p {
+  margin: 0 0 28px;
+  color: #929aaa;
+  font-size: 0.82rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .equinox-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .equinox-highlight {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .equinox-hero {
+    padding: 70px 25px 80px;
+  }
+
+  .equinox-overview {
+    padding: 65px 20px;
+  }
+
+  .equinox-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .equinox-highlight {
+    padding: 55px 25px;
+  }
+
+  .equinox-bottom {
+    padding: 65px 20px;
+  }
+}

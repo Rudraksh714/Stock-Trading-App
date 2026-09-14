@@ -1,0 +1,343 @@
+/* WATCHLIST */
+
+.watchlist-container {
+  flex-basis: 32%;
+  height: 100%;
+  box-sizing: border-box;
+
+  background-color: #1b2333;
+  color: #e8eaed;
+
+  border-right: 1px solid #2a3346;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+/* SEARCH */
+
+.search-container {
+  width: 100%;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  padding: 0 14px;
+
+  background-color: #1b2333;
+  border-bottom: 1px solid #2a3346;
+}
+
+.search {
+  flex: 1;
+  height: 100%;
+
+  padding: 0;
+
+  border: none;
+  outline: none;
+
+  background-color: transparent;
+
+  color: #e8eaed;
+
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.search::placeholder {
+  color: #6b7280;
+}
+
+.search:focus {
+  outline: none;
+  color: #e8eaed;
+}
+
+.counts {
+  margin-left: 12px;
+
+  color: #9ca3b5;
+
+  font-size: 0.7rem;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* STOCK LIST */
+
+.list {
+  list-style: none;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 8px 0;
+}
+
+.list > li {
+  position: relative;
+
+  width: 100%;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  padding: 0 14px;
+
+  border-bottom: 1px solid rgba(42, 51, 70, 0.65);
+
+  transition: background-color 0.15s ease;
+}
+
+.list > li:hover {
+  background-color: #242d40;
+}
+
+/* STOCK ITEM */
+
+.item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-width: 0;
+}
+
+.item > p {
+  position: relative;
+
+  margin: 0;
+  padding-left: 10px;
+
+  color: #e8eaed;
+
+  font-size: 0.76rem;
+  font-weight: 500;
+
+  line-height: 34px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  cursor: pointer;
+}
+
+
+/* Performance indicator */
+
+.item > p::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 2px;
+  height: 18px;
+
+  transform: translateY(-50%);
+
+  border-radius: 2px;
+}
+
+.item > p.up::before {
+  background-color: #3ddc97;
+}
+
+.item > p.down::before {
+  background-color: #ff6b6b;
+}
+
+
+/* PRICE / PERCENTAGE */
+
+.itemInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 3px;
+
+  margin-left: 12px;
+
+  white-space: nowrap;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.itemInfo .percent {
+  margin: 0;
+
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.itemInfo .percent.up {
+  color: #3ddc97;
+}
+
+.itemInfo .percent.down {
+  color: #ff6b6b;
+}
+
+.itemInfo svg.up {
+  width: 16px;
+  height: 16px;
+
+  color: #3ddc97;
+}
+
+.itemInfo svg.down {
+  width: 16px;
+  height: 16px;
+
+  color: #ff6b6b;
+}
+
+.price {
+  min-width: 62px;
+
+  margin-left: 6px;
+
+  color: #e8eaed;
+
+  font-size: 0.73rem;
+  font-weight: 500;
+
+  text-align: right;
+
+  font-variant-numeric: tabular-nums;
+}
+
+/* HOVER ACTIONS */
+
+.actions {
+  position: absolute;
+
+  right: 10px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+
+  padding: 3px;
+
+  background-color: #242d40;
+
+  border: 1px solid #2a3346;
+  border-radius: 5px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  z-index: 2;
+}
+
+.actions button {
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: transparent;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.actions .icon {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* Buy */
+
+.actions .buy {
+  color: #3ddc97;
+}
+
+.actions .buy:hover {
+  background-color: rgba(61, 220, 151, 0.12);
+}
+
+
+/* Sell */
+
+.actions .sell {
+  color: #ff6b6b;
+}
+
+.actions .sell:hover {
+  background-color: rgba(255, 107, 107, 0.12);
+}
+
+
+/* Analytics / More */
+
+.actions .action {
+  color: #9ca3b5;
+}
+
+.actions .action:hover {
+  background-color: #2a3346;
+  color: #e8eaed;
+}
+
+/* SCROLLBAR */
+
+.watchlist-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.watchlist-container::-webkit-scrollbar-track {
+  background-color: #1b2333;
+}
+
+.watchlist-container::-webkit-scrollbar-thumb {
+  background-color: #2a3346;
+  border-radius: 4px;
+}
+
+.watchlist-container::-webkit-scrollbar-thumb:hover {
+  background-color: #3a455c;
+}
+
+
+.watchlist-chart-container {
+  width: 90px;
+  height: 90px;
+  margin: 10px auto;
+  flex-shrink: 0; /* sidebar ke andar squeeze na ho */
+}
+
+.watchlist-chart-container canvas {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}

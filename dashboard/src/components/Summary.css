@@ -1,0 +1,520 @@
+/* SUMMARY PAGE */
+
+.summary-container {
+  width: 100%;
+  min-height: 100%;
+  padding: 30px 34px 42px;
+  box-sizing: border-box;
+
+  background: transparent;
+  color: #1a2233;
+}
+
+
+/* HEADER */
+
+.summary-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100%;
+
+  margin-bottom: 0;
+  padding-bottom: 20px;
+}
+
+.summary-title {
+  margin: 0;
+
+  color: #1e3a5f;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.summary-subtitle {
+  margin: 5px 0 0;
+
+  color: #7b8495;
+  font-size: 0.76rem;
+  font-weight: 400;
+}
+
+.summary-header-line {
+  width: 100%;
+  height: 3px;
+
+  margin-bottom: 24px;
+
+  background: linear-gradient(
+    90deg,
+    #0d2b4e 0%,
+    #1e3a5f 40%,
+    #3f6fa8 70%,
+    rgba(63, 111, 168, 0.2) 100%
+  );
+
+  border-radius: 3px;
+}
+
+
+/* MARKET OPEN */
+
+.market-badge {
+  margin-left: auto;
+
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 13px;
+
+  border: 1px solid rgba(28, 174, 112, 0.28);
+  border-radius: 20px;
+
+  background: rgba(29, 180, 115, 0.075);
+  color: #13875c;
+
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+
+  box-shadow:
+    0 0 0 1px rgba(29, 180, 115, 0.025),
+    0 0 16px rgba(29, 180, 115, 0.10);
+}
+
+.market-badge::before {
+  content: "";
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #20b978;
+
+  box-shadow:
+    0 0 6px rgba(32, 185, 120, 0.8),
+    0 0 12px rgba(32, 185, 120, 0.45);
+}
+
+/* PRIMARY CARDS */
+
+.summary-primary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+
+  margin-bottom: 18px;
+}
+
+.summary-card {
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid rgba(125, 135, 155, 0.17);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.76);
+
+  box-shadow:
+    0 8px 28px rgba(35, 45, 65, 0.045),
+    0 1px 2px rgba(35, 45, 65, 0.025);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(115, 125, 150, 0.25);
+
+  box-shadow:
+    0 12px 32px rgba(35, 45, 65, 0.075),
+    0 2px 5px rgba(35, 45, 65, 0.035);
+}
+
+
+/* CARD HEADER */
+
+.summary-card-header {
+  padding: 17px 21px;
+
+  border-bottom: 1px solid rgba(125, 135, 155, 0.12);
+
+  background: rgba(247, 248, 251, 0.72);
+}
+
+.summary-card-title {
+  margin: 0;
+
+  color: #242b3b;
+  font-size: 0.79rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.summary-card-meta {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #929aaa;
+  font-size: 0.66rem;
+}
+
+
+/* CARD BODY */
+
+.summary-card .card-body {
+  padding: 23px 21px 21px;
+}
+
+.summary-value {
+  color: #171e2d;
+
+  font-size: 1.85rem;
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-description {
+  margin: 7px 0 0;
+
+  color: #858e9e;
+  font-size: 0.7rem;
+}
+
+
+/* PROFIT / LOSS */
+
+.profit-value {
+  color: #16865d !important;
+}
+
+.loss {
+  color: #d95362 !important;
+}
+
+.holding-value-row {
+  gap: 10px;
+}
+
+
+/* PROFIT BADGE */
+
+.profit-badge {
+  padding: 5px 8px;
+
+  border: 1px solid rgba(25, 160, 102, 0.2);
+  border-radius: 6px;
+
+  background: rgba(25, 160, 102, 0.075);
+  color: #16865d;
+
+  font-size: 0.62rem;
+  font-weight: 650;
+}
+
+.loss-badge {
+  padding: 5px 8px;
+
+  border: 1px solid rgba(215, 76, 91, 0.18);
+  border-radius: 6px;
+
+  background: rgba(215, 76, 91, 0.065);
+  color: #d65362;
+
+  font-size: 0.62rem;
+  font-weight: 650;
+}
+
+
+/* SUMMARY LIST - values right align */
+
+.summary-list {
+  border-top: 1px solid rgba(125, 135, 155, 0.12);
+}
+
+.summary-list .list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 21px;
+
+  border: none;
+  border-bottom: 1px solid rgba(125, 135, 155, 0.09);
+
+  background: transparent;
+
+  color: #7b8494;
+
+  font-size: 0.7rem;
+}
+
+.summary-list .list-group-item:last-child {
+  border-bottom: none;
+}
+
+.summary-list .list-group-item strong {
+  margin-left: auto;
+  text-align: right;
+
+  color: #303849;
+
+  font-size: 0.71rem;
+  font-weight: 600;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ACCOUNT SNAPSHOT - values right align */
+
+.snapshot-card {
+  margin-bottom: 18px;
+  overflow: hidden;
+
+  border: 1px solid rgba(125, 135, 155, 0.17);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.74);
+
+  box-shadow:
+    0 7px 24px rgba(35, 45, 65, 0.04);
+}
+
+.snapshot-header {
+  padding: 16px 21px;
+
+  border-bottom: 1px solid rgba(125, 135, 155, 0.12);
+
+  background: rgba(247, 248, 251, 0.72);
+}
+
+.snapshot-title {
+  margin: 0;
+
+  color: #242b3b;
+  font-size: 0.79rem;
+  font-weight: 650;
+}
+
+.snapshot-subtitle {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #929aaa;
+  font-size: 0.66rem;
+}
+
+.snapshot-list {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.snapshot-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  min-width: 0;
+  overflow: hidden;
+
+  padding: 17px 21px;
+
+  border: none;
+  border-right: 1px solid rgba(125, 135, 155, 0.11);
+
+  background: transparent;
+}
+
+.snapshot-item:last-child {
+  border-right: none;
+}
+
+.snapshot-item span {
+  display: block;
+  width: 100%;
+  text-align: right;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  margin-bottom: 7px;
+
+  color: #858e9e;
+  font-size: 0.67rem;
+}
+
+.snapshot-item strong {
+  display: block;
+  width: 100%;
+  text-align: right;
+
+  color: #252d3d;
+
+  font-size: 0.91rem;
+  font-weight: 650;
+
+  font-variant-numeric: tabular-nums;
+}
+
+/* HOLDINGS OVERVIEW - values right align */
+
+.holdings-overview {
+  overflow: hidden;
+
+  border: 1px solid rgba(125, 135, 155, 0.17);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.74);
+
+  box-shadow:
+    0 7px 24px rgba(35, 45, 65, 0.04);
+}
+
+.holdings-overview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 21px;
+
+  border-bottom: 1px solid rgba(125, 135, 155, 0.12);
+
+  background: rgba(247, 248, 251, 0.72);
+}
+
+.holdings-overview-title {
+  margin: 0;
+
+  color: #242b3b;
+  font-size: 0.79rem;
+  font-weight: 650;
+}
+
+.holdings-overview-meta {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #929aaa;
+  font-size: 0.66rem;
+}
+
+.holdings-overview-body {
+  padding: 0;
+}
+
+.overview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 21px;
+
+  border-bottom: 1px solid rgba(125, 135, 155, 0.09);
+}
+
+.overview-row:last-child {
+  border-bottom: none;
+}
+
+.overview-row > span {
+  color: #7b8494;
+  font-size: 0.7rem;
+}
+
+.overview-row strong {
+  margin-left: auto;
+  text-align: right;
+
+  color: #303849;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .summary-container {
+    padding: 24px 18px 32px;
+  }
+
+  .summary-primary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .snapshot-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  .snapshot-item {
+    align-items: flex-end;
+
+    border-right: none;
+    border-bottom: 1px solid rgba(125, 135, 155, 0.11);
+  }
+
+  .snapshot-item:last-child {
+    border-bottom: none;
+  }
+}
+
+
+
+.holding-value-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.overview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 21px;
+
+  border-bottom: 1px solid rgba(125, 135, 155, 0.09);
+}
+
+.overview-value-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+
+.chart-body {
+  padding: 20px 21px !important;
+  height: 260px;
+}
+
+.chart-body canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

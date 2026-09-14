@@ -1,0 +1,256 @@
+/* ORDERS PAGE */
+
+.orders {
+  width: 100%;
+  min-height: 100%;
+  padding: 30px 34px 42px;
+  box-sizing: border-box;
+  background: transparent;
+  color: #1a2233;
+}
+
+/* ORDER SUMMARY */
+
+.order-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.order-summary-card {
+  padding: 18px 20px;
+  border: 1px solid rgba(125, 135, 155, 0.17);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow:
+    0 7px 24px rgba(35, 45, 65, 0.04),
+    0 1px 2px rgba(35, 45, 65, 0.025);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.order-summary-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(115, 125, 150, 0.25);
+  box-shadow:
+    0 11px 30px rgba(35, 45, 65, 0.065),
+    0 2px 5px rgba(35, 45, 65, 0.03);
+}
+
+.order-summary-card span {
+  display: block;
+  margin-bottom: 9px;
+  color: #858e9e;
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+
+.order-summary-card strong {
+  display: block;
+  color: #202839;
+  font-size: 1.35rem;
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ORDERS HEADER */
+
+.orders-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(125, 135, 155, 0.14);
+}
+
+.orders-header h5 {
+  margin: 0;
+  color: #171d2b;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.orders-header p {
+  margin: 5px 0 0;
+  color: #929aaa;
+  font-size: 0.7rem;
+}
+
+.orders-count {
+  padding: 6px 10px;
+  border: 1px solid rgba(125, 135, 155, 0.18);
+  border-radius: 7px;
+  background: rgba(247, 248, 251, 0.7);
+  color: #7b8495;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+/* ORDERS TABLE */
+
+.orders-table-wrapper {
+  overflow: hidden;
+  border: 1px solid rgba(125, 135, 155, 0.17);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow:
+    0 8px 28px rgba(35, 45, 65, 0.045),
+    0 1px 2px rgba(35, 45, 65, 0.025);
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.orders-table thead {
+  background: rgba(247, 248, 251, 0.78);
+}
+
+.orders-table th {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(125, 135, 155, 0.13);
+  color: #596376;
+  font-size: 0.7rem;
+  font-weight: 650;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.orders-table td {
+  padding: 15px 18px;
+  border-bottom: 1px solid rgba(125, 135, 155, 0.09);
+  color: #687285;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.orders-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.orders-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.orders-table tbody tr:hover {
+  background: rgba(247, 248, 251, 0.55);
+}
+
+.orders-table .stock-name {
+  color: #252d3d;
+  font-weight: 650;
+}
+
+/* BUY / SELL BADGES */
+
+.order-type {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.order-type.buy {
+  border: 1px solid rgba(25, 160, 102, 0.2);
+  background: rgba(25, 160, 102, 0.075);
+  color: #16865d;
+}
+
+.order-type.sell {
+  border: 1px solid rgba(215, 76, 91, 0.18);
+  background: rgba(215, 76, 91, 0.065);
+  color: #d65362;
+}
+
+/* EMPTY ORDERS */
+
+.no-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  padding: 40px 20px;
+  border: 1px solid rgba(125, 135, 155, 0.17);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 8px 28px rgba(35, 45, 65, 0.04);
+  text-align: center;
+}
+
+.no-orders p {
+  margin: 0 0 16px;
+  color: #697386;
+  font-size: 0.82rem;
+}
+
+.no-orders .btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #3f6fa8;
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.no-orders .btn:hover {
+  background: #335c8d;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+  .order-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .orders {
+    padding: 24px 18px 32px;
+  }
+
+  .orders-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .orders-table {
+    min-width: 650px;
+  }
+}
+
+@media (max-width: 500px) {
+  .orders {
+    padding: 20px 14px 28px;
+  }
+
+  .order-summary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .orders-header {
+    align-items: flex-start;
+  }
+}
