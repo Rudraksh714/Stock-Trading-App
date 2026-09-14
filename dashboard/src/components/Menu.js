@@ -15,14 +15,14 @@ const Menu = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3002/auth/logout",
+        "${process.env.REACT_APP_API_URL}/auth/logout",
         {},
         {
           withCredentials: true,
         },
       );
 
-      window.location.href = "http://localhost:3001/login";
+      window.location.href = "https://stock-trading-app-rho.vercel.app/login";
     } catch (error) {
       console.log(error);
     }

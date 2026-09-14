@@ -22,7 +22,7 @@ const Summary = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/funds", {
+      .get("${process.env.REACT_APP_API_URL}/funds", {
         withCredentials: true,
       })
       .then((res) => {
@@ -30,7 +30,7 @@ const Summary = () => {
       });
 
     axios
-      .get("http://localhost:3002/allHoldings", {
+      .get("${process.env.REACT_APP_API_URL}/allHoldings", {
         withCredentials: true,
       })
       .then((res) => {
