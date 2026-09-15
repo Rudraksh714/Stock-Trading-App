@@ -16,6 +16,14 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlToken = params.get("token");
+
+    if (urlToken) {
+      localStorage.setItem("token", urlToken);
+      window.history.replaceState({}, "", window.location.pathname); // URL se token hata do
+    }
+
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -30,7 +38,6 @@ const Dashboard = () => {
         { headers: { Authorization: `Bearer ${token}` } },
       )
       .then((res) => {
-        console.log("AUTH RESPONSE:", res.data);
         if (!res.data.status) {
           window.location.href =
             "https://stock-trading-app-rho.vercel.app/login";
@@ -38,8 +45,7 @@ const Dashboard = () => {
         }
         setLoading(false);
       })
-      .catch((err) => {
-        console.log("AUTH ERROR:", err.response?.data);
+      .catch(() => {
         localStorage.removeItem("token");
         window.location.href = "https://stock-trading-app-rho.vercel.app/login";
       });

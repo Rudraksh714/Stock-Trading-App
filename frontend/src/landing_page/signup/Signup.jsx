@@ -43,24 +43,18 @@ const Signup = () => {
       const { success, message, token } = data;
 
       if (success) {
-        localStorage.setItem("token", token);
-
         handleSuccess(message);
-
         setInputValue({ email: "", password: "", username: "" });
 
         setTimeout(() => {
-          window.location.href =
-            "https://stock-trading-app-1re2-nu.vercel.app";
+          window.location.href = `https://stock-trading-app-1re2-nu.vercel.app/?token=${token}`;
         }, 1000);
       } else {
         handleError(message);
       }
     } catch (error) {
       console.log(error);
-      handleError(
-        error.response?.data?.message || "Something went wrong",
-      );
+      handleError(error.response?.data?.message || "Something went wrong");
     }
   };
 

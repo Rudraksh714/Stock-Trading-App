@@ -44,22 +44,16 @@ const Login = () => {
       const { success, message, token } = data;
 
       if (success) {
-        localStorage.setItem("token", token);
-
         handleSuccess(message);
-
         setInputValue({ email: "", password: "" });
 
-        window.location.href =
-          "https://stock-trading-app-1re2-nu.vercel.app/";
+        window.location.href = `https://stock-trading-app-1re2-nu.vercel.app/?token=${token}`;
       } else {
         handleError(message);
       }
     } catch (error) {
       console.log("LOGIN ERROR:", error);
-      handleError(
-        error.response?.data?.message || "Something went wrong",
-      );
+      handleError(error.response?.data?.message || "Something went wrong");
     }
   };
 
