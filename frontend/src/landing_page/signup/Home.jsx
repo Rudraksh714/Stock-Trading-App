@@ -1,37 +1,62 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
+
   useEffect(() => {
     const verifyCookie = async () => {
-      if (!cookies.token) {
-        navigate("/login");
-      }
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_API_URL}/auth/verify`,
-        {},
-        { withCredentials: true },
-      );
-      const { status, user } = data;
-      setUsername(user);
-      return status
-        ? toast(`Hello ${user}`, {
+      try {
+        const { data } = await axios.post(
+          `${process.env.REACT_APP_API_URL}/auth/`,
+          {},
+          {
+            withCredentials: true,
+          },
+        );
+
+        const { status, user } = data;
+
+        if (status) {
+          setUsername(user);
+
+          toast(`Hello ${user}`, {
             position: "top-right",
-          })
-        : (removeCookie("token"), navigate("/login"));
+          });
+        } else {
+          navigate("/login");
+        }
+      } catch (error) {
+        console.log("AUTH ERROR:", error);
+
+        window.location.href =
+          "https://stock-trading-app-rho.vercel.app/login";
+      }
     };
+
     verifyCookie();
-  }, [cookies, navigate, removeCookie]);
-  const Logout = () => {
-    removeCookie("token");
-    navigate("/signup");
+  }, [navigate]);
+
+  const Logout = async () => {
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/auth/logout`,
+        {},
+        {
+          withCredentials: true,
+        },
+      );
+
+      window.location.href =
+        "https://stock-trading-app-rho.vercel.app/login";
+    } catch (error) {
+      console.log("LOGOUT ERROR:", error);
+    }
   };
+
   return (
     <>
       <div
@@ -48,14 +73,15 @@ const Home = () => {
         }}
       >
         <h4 style={{ color: "#f5f6f8" }}>
-          {" "}
           Welcome <span style={{ color: "#7C8CFF" }}>{username}</span>
         </h4>
+
         <button
           onClick={Logout}
           style={{
             padding: "10px 24px",
-            background: "linear-gradient(135deg, #4C5FD5 0%, #5B3FE0 100%)",
+            background:
+              "linear-gradient(135deg, #4C5FD5 0%, #5B3FE0 100%)",
             border: "1px solid rgba(76, 95, 213, 0.4)",
             borderRadius: "8px",
             color: "#ffffff",
@@ -67,6 +93,7 @@ const Home = () => {
           LOGOUT
         </button>
       </div>
+
       <ToastContainer />
     </>
   );

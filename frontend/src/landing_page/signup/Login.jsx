@@ -50,16 +50,20 @@ const Login = () => {
         },
       );
 
-      console.log(data);
+      console.log("LOGIN RESPONSE:", data);
 
       const { success, message } = data;
 
       if (success) {
         handleSuccess(message);
 
-        setTimeout(() => {
-          window.location.href = "https://stock-trading-app-1re2-nu.vercel.app";
-        }, 1000);
+        setInputValue({
+          email: "",
+          password: "",
+        });
+
+        window.location.href =
+          "https://stock-trading-app-1re2-nu.vercel.app/";
       } else {
         handleError(message);
       }
@@ -68,13 +72,10 @@ const Login = () => {
       console.log("RESPONSE:", error.response);
       console.log("MESSAGE:", error.message);
 
-      handleError(error.response?.data?.message || "Something went wrong");
+      handleError(
+        error.response?.data?.message || "Something went wrong",
+      );
     }
-
-    setInputValue({
-      email: "",
-      password: "",
-    });
   };
 
   return (
