@@ -2,6 +2,8 @@
 
 A full-stack stock trading platform built with **React, Node.js, Express, and MongoDB**. The project provides a modern trading dashboard with authentication, watchlists, orders, holdings, positions, and funds management.
 
+https://stock-trading-app-rho.vercel.app/
+
 ## 🚀 Features
 
 * User signup & login
