@@ -31,10 +31,16 @@ const Dashboard = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log("AUTH ERROR:", err);
-        console.log("AUTH ERROR RESPONSE:", err.response);
+        console.log("========== AUTH ERROR ==========");
+        console.log("Error:", err);
+        console.log("Message:", err.message);
+        console.log("Response:", err.response);
+        console.log("Response Status:", err.response?.status);
+        console.log("Response Data:", err.response?.data);
+        console.log("Response Headers:", err.response?.headers);
+        console.log("================================");
 
-        window.location.href = "https://stock-trading-app-rho.vercel.app/login";
+        setLoading(false);
       });
   }, []);
 
