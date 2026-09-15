@@ -8,50 +8,54 @@ const Home = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-  console.log("HOME MOUNTED - starting verify"); // ye add karo
+    const verifyCookie = async () => {
+      const token = localStorage.getItem("token");
 
-  const verifyCookie = async () => {
-    console.log("CALLING API URL:", `${process.env.REACT_APP_API_URL}/auth/`); // ye bhi add karo
-
-    try {
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_API_URL}/auth/`,
-        {},
-        { withCredentials: true },
-      );
-
-      console.log("VERIFY RESPONSE:", data); // ye bhi add karo
-
-      const { status, user } = data;
-
-      if (status) {
-        setUsername(user);
-        toast(`Hello ${user}`, { position: "top-right" });
-      } else {
-        console.log("STATUS FALSE - redirecting to login"); // ye bhi
-        navigate("/login");
+      if (!token) {
+        window.location.href =
+          "https://stock-trading-app-rho.vercel.app/login";
+        return;
       }
-    } catch (error) {
-      console.log("AUTH ERROR CAUGHT:", error);
-      window.location.href = "https://stock-trading-app-rho.vercel.app/login";
-    }
-  };
 
-  verifyCookie();
-}, [navigate]);
+      try {
+        const { data } = await axios.post(
+          `${process.env.REACT_APP_API_URL}/auth/`,
+          {},
+          { headers: { Authorization: `Bearer ${token}` } },
+        );
+
+        const { status, user } = data;
+
+        if (status) {
+          setUsername(user);
+          toast(`Hello ${user}`, { position: "top-right" });
+        } else {
+          navigate("/login");
+        }
+      } catch (error) {
+        console.log("AUTH ERROR CAUGHT:", error);
+        localStorage.removeItem("token");
+        window.location.href =
+          "https://stock-trading-app-rho.vercel.app/login";
+      }
+    };
+
+    verifyCookie();
+  }, [navigate]);
 
   const Logout = async () => {
     try {
+      const token = localStorage.getItem("token");
+
       await axios.post(
         `${process.env.REACT_APP_API_URL}/auth/logout`,
         {},
-        {
-          withCredentials: true,
-        },
+        { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      window.location.href =
-        "https://stock-trading-app-rho.vercel.app/login";
+      localStorage.removeItem("token");
+
+      window.location.href = "https://stock-trading-app-rho.vercel.app/login";
     } catch (error) {
       console.log("LOGOUT ERROR:", error);
     }
@@ -80,8 +84,7 @@ const Home = () => {
           onClick={Logout}
           style={{
             padding: "10px 24px",
-            background:
-              "linear-gradient(135deg, #4C5FD5 0%, #5B3FE0 100%)",
+            background: "linear-gradient(135deg, #4C5FD5 0%, #5B3FE0 100%)",
             border: "1px solid rgba(76, 95, 213, 0.4)",
             borderRadius: "8px",
             color: "#ffffff",

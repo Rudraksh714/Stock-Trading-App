@@ -21,18 +21,18 @@ const Summary = () => {
   const { orderUpdate } = useContext(GeneralContext);
 
   useEffect(() => {
+    const authHeader = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+
     axios
-      .get(`${process.env.REACT_APP_API_URL}/funds`, {
-        withCredentials: true,
-      })
+      .get(`${process.env.REACT_APP_API_URL}/funds`, authHeader)
       .then((res) => {
         setAvailableCash(res.data.availableCash);
       });
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/allHoldings`, {
-        withCredentials: true,
-      })
+      .get(`${process.env.REACT_APP_API_URL}/allHoldings`, authHeader)
       .then((res) => {
         setAllHoldings(res.data);
       });
@@ -57,9 +57,6 @@ const Summary = () => {
 
   return (
     <div className="summary-container">
-      {/* =========================================================
-          1. SUMMARY HEADER
-          ========================================================= */}
       <div className="summary-header d-flex justify-content-between align-items-center">
         <div>
           <h5 className="summary-title">Overview</h5>
@@ -73,11 +70,7 @@ const Summary = () => {
 
       <div className="summary-header-line"></div>
 
-      {/* =========================================================
-          2. PRIMARY SUMMARY GRID
-          ========================================================= */}
       <div className="summary-primary-grid">
-        {/* EQUITY CARD */}
         <div className="card summary-card">
           <div className="card-header summary-card-header">
             <div>
@@ -104,7 +97,6 @@ const Summary = () => {
           </ul>
         </div>
 
-        {/* HOLDINGS CARD */}
         <div className="card summary-card">
           <div className="card-header summary-card-header">
             <div>
@@ -148,9 +140,6 @@ const Summary = () => {
         </div>
       </div>
 
-      {/* =========================================================
-          3. ACCOUNT SNAPSHOT
-          ========================================================= */}
       <div className="card snapshot-card">
         <div className="card-header snapshot-header">
           <div>
@@ -177,15 +166,12 @@ const Summary = () => {
         </ul>
       </div>
 
-      {/* =========================================================
-          4. PORTFOLIO SNAPSHOT (merged graph)
-          ========================================================= */}
       <div className="card holdings-overview">
         <div className="card-header holdings-overview-header">
           <div>
             <p className="holdings-overview-title">Financial Overview</p>
             <span className="holdings-overview-meta">
-              A quick view of your funds, holdings & P&amp;L
+              A quick view of your funds, holdings &amp; P&amp;L
             </span>
           </div>
 

@@ -1,5 +1,4 @@
 import React from "react";
-// import { positions } from "../data/data";
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import GeneralContext from "./GeneralContext";
@@ -12,7 +11,7 @@ const Positions = () => {
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/allPositions`, {
-        withCredentials: true,
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((res) => {
         setAllPositions(res.data);
@@ -25,28 +24,21 @@ const Positions = () => {
   );
 
   const totalPnl = allPositions.reduce(
-    (total, stock) =>
-      total + (stock.price * stock.qty - stock.avg * stock.qty),
+    (total, stock) => total + (stock.price * stock.qty - stock.avg * stock.qty),
     0,
   );
 
   return (
     <div className="positions-container">
-      {/* Header */}
       <div className="positions-header">
         <div>
           <h3 className="positions-title">Positions</h3>
-          <p className="positions-subtitle">
-            Your current open positions
-          </p>
+          <p className="positions-subtitle">Your current open positions</p>
         </div>
 
-        <span className="positions-count">
-          {allPositions.length} positions
-        </span>
+        <span className="positions-count">{allPositions.length} positions</span>
       </div>
 
-      {/* Summary Cards */}
       <div className="positions-summary">
         <div className="positions-summary-card">
           <span>Open Positions</span>
@@ -66,7 +58,6 @@ const Positions = () => {
         </div>
       </div>
 
-      {/* Current Positions */}
       <div className="positions-table-card">
         <div className="positions-table-header">
           <div>
@@ -92,8 +83,7 @@ const Positions = () => {
             <tbody>
               {allPositions.map((stock, index) => {
                 const currValue = stock.price * stock.qty;
-                const pnl =
-                  currValue - stock.avg * stock.qty;
+                const pnl = currValue - stock.avg * stock.qty;
 
                 const isProfit = pnl >= 0;
                 const profClass = isProfit ? "profit" : "loss";
@@ -102,14 +92,10 @@ const Positions = () => {
                 return (
                   <tr key={index}>
                     <td>
-                      <span className="product-badge">
-                        {stock.product}
-                      </span>
+                      <span className="product-badge">{stock.product}</span>
                     </td>
 
-                    <td className="instrument-name">
-                      {stock.name}
-                    </td>
+                    <td className="instrument-name">{stock.name}</td>
 
                     <td>{stock.qty}</td>
 
@@ -118,14 +104,11 @@ const Positions = () => {
                     <td>₹{stock.price.toFixed(2)}</td>
 
                     <td className={profClass}>
-                      {pnl >= 0 ? "+" : ""}
-                      ₹{pnl.toFixed(2)}
+                      {pnl >= 0 ? "+" : ""}₹{pnl.toFixed(2)}
                     </td>
 
                     <td>
-                      <span
-                        className={`change-badge ${dayClass}`}
-                      >
+                      <span className={`change-badge ${dayClass}`}>
                         {stock.day}
                       </span>
                     </td>

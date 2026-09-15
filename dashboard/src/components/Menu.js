@@ -18,9 +18,11 @@ const Menu = () => {
         `${process.env.REACT_APP_API_URL}/auth/logout`,
         {},
         {
-          withCredentials: true,
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         },
       );
+
+      localStorage.removeItem("token");
 
       window.location.href = "https://stock-trading-app-rho.vercel.app/login";
     } catch (error) {

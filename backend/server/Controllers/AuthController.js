@@ -1,7 +1,5 @@
 const User = require("../Models/UserModel");
-
 const { createSecretToken } = require("../util/SecretToken");
-
 const bcrypt = require("bcryptjs");
 
 module.exports.Signup = async (req, res, next) => {
@@ -23,19 +21,15 @@ module.exports.Signup = async (req, res, next) => {
 
     const token = createSecretToken(user._id);
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    });
-
     res.status(201).json({
       message: "User signed in successfully",
       success: true,
+      token,
       user,
     });
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
@@ -61,28 +55,18 @@ module.exports.Login = async (req, res, next) => {
 
     const token = createSecretToken(user._id);
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    });
-
     res.status(200).json({
       message: "User logged in successfully",
       success: true,
+      token,
     });
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
 module.exports.Logout = (req, res) => {
-  res.clearCookie("token", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
-  });
-
   res.status(200).json({
     message: "Logged out successfully",
     success: true,

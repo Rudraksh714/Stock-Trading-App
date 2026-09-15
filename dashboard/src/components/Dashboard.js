@@ -16,31 +16,32 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("AUTH CHECK STARTED");
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      window.location.href = "https://stock-trading-app-rho.vercel.app/login";
+      return;
+    }
 
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/auth/`,
         {},
-        {
-          withCredentials: true,
-        },
+        { headers: { Authorization: `Bearer ${token}` } },
       )
       .then((res) => {
         console.log("AUTH RESPONSE:", res.data);
+        if (!res.data.status) {
+          window.location.href =
+            "https://stock-trading-app-rho.vercel.app/login";
+          return;
+        }
         setLoading(false);
       })
       .catch((err) => {
-        console.log("========== AUTH ERROR ==========");
-        console.log("Error:", err);
-        console.log("Message:", err.message);
-        console.log("Response:", err.response);
-        console.log("Response Status:", err.response?.status);
-        console.log("Response Data:", err.response?.data);
-        console.log("Response Headers:", err.response?.headers);
-        console.log("================================");
-
-        setLoading(false);
+        console.log("AUTH ERROR:", err.response?.data);
+        localStorage.removeItem("token");
+        window.location.href = "https://stock-trading-app-rho.vercel.app/login";
       });
   }, []);
 
@@ -52,7 +53,6 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <GeneralContextProvider>
         <WatchList />
-
         <div className="content">
           <Routes>
             <Route exact path="/" element={<Summary />} />

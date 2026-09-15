@@ -12,19 +12,19 @@ const Funds = () => {
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [transactions, setTransactions] = useState([]);
 
+  const authHeader = () => ({
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  });
+
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/funds`, {
-        withCredentials: true,
-      })
+      .get(`${process.env.REACT_APP_API_URL}/funds`, authHeader())
       .then((res) => {
         setAvailableCash(res.data.availableCash);
       });
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/fundTransactions`, {
-        withCredentials: true,
-      })
+      .get(`${process.env.REACT_APP_API_URL}/fundTransactions`, authHeader())
       .then((res) => {
         setTransactions(res.data);
       });
@@ -34,12 +34,8 @@ const Funds = () => {
     try {
       await axios.post(
         `${process.env.REACT_APP_API_URL}/addFunds`,
-        {
-          amount: Number(addAmount),
-        },
-        {
-          withCredentials: true,
-        },
+        { amount: Number(addAmount) },
+        authHeader(),
       );
 
       setAddAmount("");
@@ -53,12 +49,8 @@ const Funds = () => {
     try {
       await axios.post(
         `${process.env.REACT_APP_API_URL}/withdrawFunds`,
-        {
-          amount: Number(withdrawAmount),
-        },
-        {
-          withCredentials: true,
-        },
+        { amount: Number(withdrawAmount) },
+        authHeader(),
       );
 
       setWithdrawAmount("");

@@ -10,7 +10,7 @@ const Orders = () => {
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/allOrders`, {
-        withCredentials: true,
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((res) => {
         setOrders(res.data);
@@ -44,7 +44,6 @@ const Orders = () => {
         </div>
       ) : (
         <>
-          {/* Order Summary */}
           <div className="order-summary">
             <div className="order-summary-card">
               <span>Total Orders</span>
@@ -67,16 +66,13 @@ const Orders = () => {
             </div>
           </div>
 
-          {/* Order History */}
           <div className="orders-header">
             <div>
               <h5>Order History</h5>
               <p>Your recent trading activity</p>
             </div>
 
-            <span className="orders-count">
-              {orders.length} orders
-            </span>
+            <span className="orders-count">{orders.length} orders</span>
           </div>
 
           <div className="orders-table-wrapper">
@@ -112,9 +108,7 @@ const Orders = () => {
                       </span>
                     </td>
 
-                    <td>
-                      ₹{(order.qty * order.price).toFixed(2)}
-                    </td>
+                    <td>₹{(order.qty * order.price).toFixed(2)}</td>
                   </tr>
                 ))}
               </tbody>

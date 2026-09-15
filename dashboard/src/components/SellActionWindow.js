@@ -23,7 +23,7 @@ const SellActionWindow = ({ uid }) => {
           mode: "SELL",
         },
         {
-          withCredentials: true,
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         },
       );
 

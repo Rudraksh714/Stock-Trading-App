@@ -1,5 +1,4 @@
 import React from "react";
-// import { holdings } from "../data/data";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
@@ -28,7 +27,7 @@ const Holdings = () => {
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/allHoldings`, {
-        withCredentials: true,
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((res) => {
         console.log(res.data);

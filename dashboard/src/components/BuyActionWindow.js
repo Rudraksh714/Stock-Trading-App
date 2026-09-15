@@ -7,12 +7,11 @@ import { useState } from "react";
 import axios from "axios";
 
 const BuyActionWindow = ({ uid }) => {
-  //yaha par uid ek prop ki trh pass hoga
-
   const [stockQuantity, setStockQuantity] = useState("");
-  const [stockPrice, setStockPrice] = useState(""); //modify-> yaha current market price set krne ke liye generalContext main uid ke saath saath price bhi pass krdena hoga
+  const [stockPrice, setStockPrice] = useState("");
   const [error, setError] = useState("");
   const { closeBuyWindow, setOrderUpdate } = useContext(GeneralContext);
+
   const handleBuyClick = async () => {
     try {
       await axios.post(
@@ -24,10 +23,10 @@ const BuyActionWindow = ({ uid }) => {
           mode: "BUY",
         },
         {
-          withCredentials: true,
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         },
       );
-      setOrderUpdate((prev) => prev + 1); //Ye basically ek refresh trigger/counter hai. Quantity ka actual data MongoDB/backend se aa raha hai, Matlab: orderUpdate: 0 → 1 Iska meaning hai: "Positions ko dobara API se data fetch karna hai."
+      setOrderUpdate((prev) => prev + 1);
       closeBuyWindow();
     } catch (error) {
       setError(error.response?.data?.message || "Something went wrong");

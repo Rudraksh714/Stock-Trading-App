@@ -16,7 +16,6 @@ const Login = () => {
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-
     setInputValue({
       ...inputValue,
       [name]: value,
@@ -24,15 +23,11 @@ const Login = () => {
   };
 
   const handleError = (err) => {
-    toast.error(err, {
-      position: "bottom-left",
-    });
+    toast.error(err, { position: "bottom-left" });
   };
 
   const handleSuccess = (msg) => {
-    toast.success(msg, {
-      position: "bottom-left",
-    });
+    toast.success(msg, { position: "bottom-left" });
   };
 
   const handleSubmit = async (e) => {
@@ -41,26 +36,19 @@ const Login = () => {
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_URL}/auth/login`,
-        {
-          email,
-          password,
-        },
-        {
-          withCredentials: true,
-        },
+        { email, password },
       );
 
       console.log("LOGIN RESPONSE:", data);
 
-      const { success, message } = data;
+      const { success, message, token } = data;
 
       if (success) {
+        localStorage.setItem("token", token);
+
         handleSuccess(message);
 
-        setInputValue({
-          email: "",
-          password: "",
-        });
+        setInputValue({ email: "", password: "" });
 
         window.location.href =
           "https://stock-trading-app-1re2-nu.vercel.app/";
@@ -69,9 +57,6 @@ const Login = () => {
       }
     } catch (error) {
       console.log("LOGIN ERROR:", error);
-      console.log("RESPONSE:", error.response);
-      console.log("MESSAGE:", error.message);
-
       handleError(
         error.response?.data?.message || "Something went wrong",
       );
@@ -81,11 +66,9 @@ const Login = () => {
   return (
     <div className="form_container">
       <h2>Login Account</h2>
-
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email</label>
-
           <input
             type="email"
             name="email"
@@ -95,10 +78,8 @@ const Login = () => {
             onChange={handleOnChange}
           />
         </div>
-
         <div>
           <label htmlFor="password">Password</label>
-
           <input
             type="password"
             name="password"
@@ -108,14 +89,11 @@ const Login = () => {
             onChange={handleOnChange}
           />
         </div>
-
         <button type="submit">Submit</button>
-
         <span>
           Don't have an account? <Link to="/signup">Signup</Link>
         </span>
       </form>
-
       <ToastContainer />
     </div>
   );
