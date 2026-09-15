@@ -8,37 +8,37 @@ const Home = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    const verifyCookie = async () => {
-      try {
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_API_URL}/auth/`,
-          {},
-          {
-            withCredentials: true,
-          },
-        );
+  console.log("HOME MOUNTED - starting verify"); // ye add karo
 
-        const { status, user } = data;
+  const verifyCookie = async () => {
+    console.log("CALLING API URL:", `${process.env.REACT_APP_API_URL}/auth/`); // ye bhi add karo
 
-        if (status) {
-          setUsername(user);
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/auth/`,
+        {},
+        { withCredentials: true },
+      );
 
-          toast(`Hello ${user}`, {
-            position: "top-right",
-          });
-        } else {
-          navigate("/login");
-        }
-      } catch (error) {
-        console.log("AUTH ERROR:", error);
+      console.log("VERIFY RESPONSE:", data); // ye bhi add karo
 
-        window.location.href =
-          "https://stock-trading-app-rho.vercel.app/login";
+      const { status, user } = data;
+
+      if (status) {
+        setUsername(user);
+        toast(`Hello ${user}`, { position: "top-right" });
+      } else {
+        console.log("STATUS FALSE - redirecting to login"); // ye bhi
+        navigate("/login");
       }
-    };
+    } catch (error) {
+      console.log("AUTH ERROR CAUGHT:", error);
+      window.location.href = "https://stock-trading-app-rho.vercel.app/login";
+    }
+  };
 
-    verifyCookie();
-  }, [navigate]);
+  verifyCookie();
+}, [navigate]);
 
   const Logout = async () => {
     try {
