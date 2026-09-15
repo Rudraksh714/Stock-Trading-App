@@ -14,9 +14,7 @@ import BuiltWith from "./BuiltWith";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
-  //2. Loading state add ki, Matlab auth verify hone se pehle dashboard render nahi hoga.
 
-  //1. Auth check add kiya
   useEffect(() => {
     console.log("AUTH CHECK STARTED");
 
@@ -35,9 +33,11 @@ const Dashboard = () => {
       .catch((err) => {
         console.log("AUTH ERROR:", err);
         console.log("AUTH ERROR RESPONSE:", err.response);
-        setLoading(false);
+
+        window.location.href = "https://stock-trading-app-rho.vercel.app/login";
       });
   }, []);
+
   if (loading) {
     return <div>Loading...</div>;
   }
